@@ -1,15 +1,20 @@
 import { Controller, Get, Post, Body, Param, NotFoundException } from '@nestjs/common';
 import { CreateMessageDto } from './dtos/create-message.dto';
+import { MessagesRepository } from './messages.repository';
 import { MessagesService } from './messages.service';
 
 @Controller('messages')
 export class MessagesController {
-    messagesService: MessagesService;
+    // messagesService: MessagesService;
 
-    constructor() {
-        // DONT DO THIS ON REAL APPS
-        // USE DEPENDECY INJECTION
-        this.messagesService = new MessagesService();
+    // constructor() {
+    //     // DONT DO THIS ON REAL APPS
+    //     // USE DEPENDECY INJECTION
+    //     this.messagesService = new MessagesService(new MessagesRepositoryz());
+    // }
+
+    constructor(public messagesService: MessagesService) {
+
     }
 
     @Get()

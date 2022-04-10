@@ -16,3 +16,15 @@ npm install -g @nestjs/cli
 
 generate new project
 nest new nameApp
+
+Inversion of control Principle
+
+Classes should not create instances of its dependencies on its own
+
+DI Container flow
+
+-   At start up, register all classes with the container
+-   Container will figure out what each dependency each class has
+-   We then ask the container to create an instance of a class for us
+-   Container create all required dependencies and give us the instance
+-   Constainer will hold into the created dependency instance and reuse them if needed
