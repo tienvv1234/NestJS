@@ -1,8 +1,7 @@
-import { Exclude } from 'class-transformer';
 import {
     AfterInsert,
-    AfterUpdate,
     AfterRemove,
+    AfterUpdate,
     Column,
     Entity,
     PrimaryGeneratedColumn,
@@ -17,7 +16,6 @@ export class User {
     email: string;
 
     @Column()
-    @Exclude()
     password: string;
 
     // this is a lifecycle hook
