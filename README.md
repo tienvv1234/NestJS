@@ -28,3 +28,7 @@ DI Container flow
 -   We then ask the container to create an instance of a class for us
 -   Container create all required dependencies and give us the instance
 -   Constainer will hold into the created dependency instance and reuse them if needed
+
+### UseInterceptors and ClassSerializerInterceptor
+- To exclude field when response from api
+- Not flexible (it will exclude fields all apis)
