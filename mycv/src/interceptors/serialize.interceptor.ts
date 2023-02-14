@@ -8,7 +8,14 @@ import { plainToInstance } from 'class-transformer';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-export function Serialize(dto: any) {
+// this is the interface that we will use to define the type of the class
+// that we want to transform the data into Json
+// Stephen Grider: "the args must be in class"
+interface ClassConstructor<T> {
+    new (...args: any[]): T; // this is the constructor of the class
+}
+
+export function Serialize<T>(dto: ClassConstructor<T>) {
     return UseInterceptors(new SerializeInterceptor(dto));
 }
 
