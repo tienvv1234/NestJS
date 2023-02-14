@@ -32,3 +32,7 @@ DI Container flow
 ### UseInterceptors and ClassSerializerInterceptor
 - To exclude field when response from api
 - Not flexible (it will exclude fields all apis)
+
+
+### Custom Interceptor
+Create file Custom Interceptor and use that file instead of ClassSerializerInterceptor
