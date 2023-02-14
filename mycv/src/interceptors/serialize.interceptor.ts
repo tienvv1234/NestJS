@@ -6,10 +6,12 @@ import {
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { plainToClass } from 'class-transformer';
+import { plainToClass, plainToInstance } from 'class-transformer';
 import { UserDto } from '../users/dtos/user.dto';
 
 export class SerializeInterceptor implements NestInterceptor {
+    constructor(private dto: any) {}
+
     intercept(
         context: ExecutionContext,
         next: CallHandler<any>
@@ -23,7 +25,7 @@ export class SerializeInterceptor implements NestInterceptor {
 
                 // this is the class that we want to transform the data into Json
                 // Expose in Class UserDto are used to control the data that is sent back to the client
-                return plainToClass(UserDto, data, {
+                return plainToInstance(this.dto, data, {
                     excludeExtraneousValues: true, // this will remove the properties that are not defined in the UserDto class
                 });
             })
