@@ -36,6 +36,8 @@ DI Container flow
 
 ### Custom Interceptor
 Create file Custom Interceptor and use that file instead of ClassSerializerInterceptor
+- Interceptor can using a service to query db
 
-
-Note: To be anotation injectable, class need to register in module class and provider
+- Note: To be anotation injectable, class need to register in module class and provider
+[!Custom Interceptor](/mycv/custom-interceptor.png)
+### Global Interceptor
