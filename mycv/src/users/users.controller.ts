@@ -35,6 +35,12 @@ export class UsersController {
     //     return session.color;
     // }
 
+    @Post('signout')
+    signout(@Session() session: any) {
+        session.userId = null;
+        return { message: 'signed out' };
+    }
+
     @Get('/whoami')
     whoAmI(@Session() session: any) {
         if (!session.userId) {
