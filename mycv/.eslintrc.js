@@ -23,6 +23,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/next-line': 'off',
     '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
     'prettier/prettier': ['error', {
       'singleQuote': true,
       'tabWidth': 4
