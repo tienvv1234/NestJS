@@ -8,7 +8,9 @@ import {
     Patch,
     Post,
     Query,
+    Request,
     Session,
+    UseInterceptors,
 } from '@nestjs/common';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { CreateUserDto } from './dtos/create-user.dto';
@@ -16,8 +18,12 @@ import { UpdateUserDto } from './dtos/update-user.dto';
 import { UserDto } from './dtos/user.dto';
 import { UsersService } from './users.service';
 import { AuthService } from './auth.service';
+import { User } from './user.entity';
+import { CurrentUser } from './decorators/current-user.decorator';
+import { CurrentUserInterceptor } from './interceptors/current-user.interceptor';
 @Controller('auth')
 @Serialize(UserDto)
+@UseInterceptors(CurrentUserInterceptor)
 export class UsersController {
     constructor(
         private usersService: UsersService,
@@ -41,18 +47,34 @@ export class UsersController {
         return { message: 'signed out' };
     }
 
+    // get current userid and query user from database
+    // @Get('/whoami')
+    // whoAmI(@Session() session: any) {
+    //     if (!session.userId) {
+    //         return null;
+    //     }
+    //     return this.usersService.findOne(session.userId);
+    // }
+
+    // to get current user in request using decorator
     @Get('/whoami')
-    whoAmI(@Session() session: any) {
-        if (!session.userId) {
-            return null;
-        }
-        return this.usersService.findOne(session.userId);
+    whoAmI(@CurrentUser() user: User) {
+        // Interceptor current user Step 4
+        return user;
     }
+
+    // other way to get current user in request
+    // @Get('/whoami')
+    // whoAmI(@Request() request: Request) {
+    //     // Interceptor current user Step 4
+    //     return request.currentUser;
+    // }
 
     @Post('/signup')
     async createUser(@Body() body: CreateUserDto, @Session() session: any) {
         const user = await this.authService.signup(body.email, body.password);
         session.userId = user.id;
+        // Interceptor current user Step 1
         return user;
     }
 
@@ -63,6 +85,7 @@ export class UsersController {
     async signin(@Body() body: CreateUserDto, @Session() session: any) {
         const user = await this.authService.signin(body.email, body.password);
         session.userId = user.id;
+        // Interceptor current user Step
         return user;
     }
 

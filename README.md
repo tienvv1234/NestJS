@@ -36,3 +36,6 @@ DI Container flow
 
 ### Custom Interceptor
 Create file Custom Interceptor and use that file instead of ClassSerializerInterceptor
+
+
+Note: To be anotation injectable, class need to register in module class and provider
