@@ -23,6 +23,11 @@ export class User {
     @OneToMany(() => Report, (report) => report.user)
     reports: Report[];
 
+    @Column({
+        default: true,
+    })
+    admin: boolean;
+
     // this is a lifecycle hook
     // this will be called after the user is inserted into the database
     // Hook are executed when call create(this will create user entity) before save
