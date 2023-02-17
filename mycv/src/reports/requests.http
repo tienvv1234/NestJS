@@ -1,0 +1,21 @@
+### Create Report
+POST http://localhost:3000/reports
+content-type: application/json
+
+{
+    "make": "Toyota",
+    "model": "Camry",
+    "year": 2015,
+    "price": 20000,
+    "mileage": 10000,
+    "lng": 0,
+    "lat": 0
+}
+
+### Change Report
+PATCH http://localhost:3000/reports/9
+content-type: application/json
+
+{
+    "approved": true
+}

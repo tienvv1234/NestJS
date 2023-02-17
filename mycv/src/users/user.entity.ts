@@ -1,9 +1,11 @@
+import { Report } from '../reports/reports.entity';
 import {
     AfterInsert,
     AfterRemove,
     AfterUpdate,
     Column,
     Entity,
+    OneToMany,
     PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -17,6 +19,9 @@ export class User {
 
     @Column()
     password: string;
+
+    @OneToMany(() => Report, (report) => report.user)
+    reports: Report[];
 
     // this is a lifecycle hook
     // this will be called after the user is inserted into the database
