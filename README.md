@@ -41,3 +41,8 @@ Create file Custom Interceptor and use that file instead of ClassSerializerInter
 - Note: To be anotation injectable, class need to register in module class and provider
 [!Custom Interceptor](/mycv/custom-interceptor.png)
 ### Global Interceptor
+
+
+
+### Guards
+[!Guards](/mycv/guards.png)
