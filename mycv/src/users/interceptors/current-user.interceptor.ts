@@ -16,6 +16,7 @@ export class CurrentUserInterceptor implements NestInterceptor {
         next: CallHandler<any>
     ): Promise<Observable<any>> {
         // Interceptor current user Step 2
+        console.log('interceptor');
         const request = context.switchToHttp().getRequest();
         const { userId } = request.session || {};
 

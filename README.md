@@ -46,3 +46,11 @@ Create file Custom Interceptor and use that file instead of ClassSerializerInter
 
 ### Guards
 [!Guards](/mycv/guards.png)
+
+Note: The AdminGuards is not working because the CurrentUserInterceptor run after ther AdminGuards so that the request.currentUser isn't exsited yet
+
+Solution for this: CurrentUserInterceptor change to middlware
+
+### Provider
+- APP_PIPE for validation
+- APP_INTERCEPTOR for interceptor
