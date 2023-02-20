@@ -23,6 +23,7 @@ const cookieSession = require('cookie-session');
                 database: configService.get<string>('DB_NAME'),
                 synchronize: true,
                 entities: [User, Report],
+                logger: 'debug',
             }),
         }),
         // TypeOrmModule.forRoot({
