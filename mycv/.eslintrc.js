@@ -26,6 +26,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-namespace': 'off',
     '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/parser': 'off',
     'prettier/prettier': ['error', {
       'singleQuote': true,
       'tabWidth': 4
