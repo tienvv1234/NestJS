@@ -9,6 +9,7 @@ import { User } from './users/user.entity';
 import { Report } from './reports/reports.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TestModule } from './test/test.controller';
+import { dbConfig } from 'data-source';
 const cookieSession = require('cookie-session');
 @Module({
     imports: [
@@ -16,16 +17,17 @@ const cookieSession = require('cookie-session');
             isGlobal: true, // this makes the config service available to all modules
             envFilePath: `.env.${process.env.NODE_ENV}`,
         }),
-        TypeOrmModule.forRootAsync({
-            inject: [ConfigService],
-            useFactory: (configService: ConfigService) => ({
-                type: 'sqlite',
-                database: configService.get<string>('DB_NAME'),
-                synchronize: true,
-                entities: [User, Report],
-                logger: 'debug',
-            }),
-        }),
+        TypeOrmModule.forRoot(dbConfig),
+        // TypeOrmModule.forRootAsync({
+        //     inject: [ConfigService],
+        //     useFactory: (configService: ConfigService) => ({
+        //         type: 'sqlite',
+        //         database: configService.get<string>('DB_NAME'),
+        //         synchronize: true,
+        //         entities: [User, Report],
+        //         logger: 'debug',
+        //     }),
+        // }),
         // TypeOrmModule.forRoot({
         //     // set up the database connection,
         //     type: 'sqlite', // the method forRoot() is a shortcut for the forRootAsync() method
