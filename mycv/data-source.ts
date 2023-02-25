@@ -7,14 +7,8 @@ export const dbConfig: DataSourceOptions = {
     // migrationsRun: true,
     // migrations: [__dirname + '/src/migrations/*.{ts,js}'],
     // entities: [__dirname + '**/*.entity.{ts,js}'],
-    entities: [
-        __dirname + '/entity/**/*.entity.ts',
-        __dirname + '/entity/**/*.entity.js',
-    ],
-    migrations: [
-        __dirname + '/migration/**/*.ts',
-        __dirname + '/migration/**/*.js',
-    ],
+    entities: [__dirname + '/**/*.entity{.ts,.js}'],
+    migrations: [__dirname + '/migration/**/*{.ts,.js}'],
 
     logging: ['query', 'error'],
 };
